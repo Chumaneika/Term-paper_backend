@@ -15,8 +15,17 @@ public class Client {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "email", nullable = false, unique = true)
+    @Column(name = "surname")
+    private String surname;
+
+    @Column(name = "email", unique = true)
     private String email;
+
+    @Column(name = "phoneNumber", unique = true)
+    private String phoneNumber;
+
+    @Column(name = "notes")
+    private String notes;
 
     @OneToMany(mappedBy = "client")
     @JsonManagedReference(value = "client-deals")
@@ -52,5 +61,29 @@ public class Client {
 
     public void setDeals(List<Deal> deals) {
         this.deals = deals;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
     }
 }

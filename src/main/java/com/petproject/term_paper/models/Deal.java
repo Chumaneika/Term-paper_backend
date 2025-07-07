@@ -3,6 +3,8 @@ package com.petproject.term_paper.models;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
@@ -16,9 +18,17 @@ public class Deal {
     @Column(name = "title", nullable = false)
     private String title;
 
-    @Column(name = "date", nullable = false)
+    @Column(name = "dateOpen", nullable = false)
     @JsonFormat(pattern = "dd-MM-yyyy")
-    private LocalDate date;
+    private LocalDate dateOpen;
+
+    @Column(name = "dateClose", nullable = true)
+    @JsonFormat(pattern = "dd-MM-yyyy")
+    private LocalDate dateClose;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status", nullable = false)
+    private StatusDeal status;
 
     @Column(name = "price")
     private Double price;
@@ -54,12 +64,28 @@ public class Deal {
         this.title = title;
     }
 
-    public LocalDate getDate() {
-        return date;
+    public LocalDate getDateOpen() {
+        return dateOpen;
     }
 
-    public void setDate(LocalDate date) {
-        this.date = date;
+    public void setDateOpen(LocalDate dateOpen) {
+        this.dateOpen = dateOpen;
+    }
+
+    public LocalDate getDateClose() {
+        return dateClose;
+    }
+
+    public void setDateClose(LocalDate dateClose) {
+        this.dateClose = dateClose;
+    }
+
+    public StatusDeal getStatus() {
+        return status;
+    }
+
+    public void setStatus(StatusDeal status) {
+        this.status = status;
     }
 
     public Double getPrice() {

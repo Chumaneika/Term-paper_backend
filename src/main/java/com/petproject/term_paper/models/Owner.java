@@ -20,8 +20,17 @@ public class Owner {
     @Column(name = "name", nullable = false)
     private String name;
 
+    @Column(name = "surname", nullable = false)
+    private String surname;
+
     @Column(name = "email", nullable = false, unique = true)
     private String email;
+
+    @Column(name = "phoneNumber", unique = true)
+    private String phoneNumber;
+
+    @Column(name = "notes")
+    private String notes;
 
     @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
     @JsonManagedReference(value = "owner-properties")
@@ -57,5 +66,29 @@ public class Owner {
 
     public void setProperties(List<Property> properties) {
         this.properties = properties;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
     }
 }
