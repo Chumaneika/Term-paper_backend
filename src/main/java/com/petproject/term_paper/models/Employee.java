@@ -22,6 +22,9 @@ public class Employee {
     @Column(name = "position", nullable = false)
     private String position;
 
+    @Column(name = "experience", nullable = false)
+    private Integer experience;
+
     @OneToMany(mappedBy = "employee")
     @JsonManagedReference(value = "employee-deals")
     private List<Deal> deals;
@@ -56,5 +59,13 @@ public class Employee {
 
     public void setDeals(List<Deal> deals) {
         this.deals = deals;
+    }
+
+    public Integer getExperience() {
+        return experience;
+    }
+
+    public void setExperience(Integer experience) {
+        this.experience = experience;
     }
 }
