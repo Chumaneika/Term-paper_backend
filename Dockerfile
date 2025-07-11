@@ -17,4 +17,4 @@ RUN ./mvnw package -DskipTests
 EXPOSE 8080
 
 # 7) Запускаем приложение
-CMD ["java", "-jar", "target/Term-paper_backend-0.0.1-SNAPSHOT.jar"]
+CMD ["sh", "-c", "java -jar target/*.jar"]
